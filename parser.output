@@ -1,0 +1,209 @@
+Terminales no usados en la gramática
+
+    EQUALS
+    PUNTERO
+
+
+Gramática
+
+    0 $accept: prog $end
+
+    1 prog: INSTRUCCIONES
+
+    2 INSTRUCCIONES: ε
+    3              | INSTRUCCION INSTRUCCIONES
+
+    4 INSTRUCCION: DECLARACION
+    5            | FUNCIONES
+
+    6 DECLARACION: TIPOS_DATOS_ARCHIVOS PUNTOCOMA
+
+    7 TIPOS_DATOS_ARCHIVOS: TIPO_DATO_ARCHIVO
+
+    8 FUNCIONES: FUNCION LEFTP RIGHTP PUNTOCOMA
+
+    9 FUNCION: FUNCION_ARCHIVO
+   10        | OTHER
+
+
+Terminales con las reglas donde aparecen
+
+    $end (0) 0
+    error (256)
+    TIPO_DATO_ARCHIVO <tipo_dato_archivo> (258) 7
+    FUNCION_ARCHIVO <funcion_archivo> (259) 9
+    LEFTP (260) 8
+    RIGHTP (261) 8
+    PUNTOCOMA (262) 6 8
+    EQUALS (263)
+    PUNTERO (264)
+    OTHER (265) 10
+
+
+No terminales con las reglas donde aparecen
+
+    $accept (11)
+        on left: 0
+    prog (12)
+        on left: 1
+        on right: 0
+    INSTRUCCIONES (13)
+        on left: 2 3
+        on right: 1 3
+    INSTRUCCION (14)
+        on left: 4 5
+        on right: 3
+    DECLARACION (15)
+        on left: 6
+        on right: 4
+    TIPOS_DATOS_ARCHIVOS (16)
+        on left: 7
+        on right: 6
+    FUNCIONES (17)
+        on left: 8
+        on right: 5
+    FUNCION (18)
+        on left: 9 10
+        on right: 8
+
+
+Estado 0
+
+    0 $accept: • prog $end
+
+    TIPO_DATO_ARCHIVO  desplazar e ir al estado 1
+    FUNCION_ARCHIVO    desplazar e ir al estado 2
+    OTHER              desplazar e ir al estado 3
+
+    $default  reduce usando la regla 2 (INSTRUCCIONES)
+
+    prog                  ir al estado 4
+    INSTRUCCIONES         ir al estado 5
+    INSTRUCCION           ir al estado 6
+    DECLARACION           ir al estado 7
+    TIPOS_DATOS_ARCHIVOS  ir al estado 8
+    FUNCIONES             ir al estado 9
+    FUNCION               ir al estado 10
+
+
+Estado 1
+
+    7 TIPOS_DATOS_ARCHIVOS: TIPO_DATO_ARCHIVO •
+
+    $default  reduce usando la regla 7 (TIPOS_DATOS_ARCHIVOS)
+
+
+Estado 2
+
+    9 FUNCION: FUNCION_ARCHIVO •
+
+    $default  reduce usando la regla 9 (FUNCION)
+
+
+Estado 3
+
+   10 FUNCION: OTHER •
+
+    $default  reduce usando la regla 10 (FUNCION)
+
+
+Estado 4
+
+    0 $accept: prog • $end
+
+    $end  desplazar e ir al estado 11
+
+
+Estado 5
+
+    1 prog: INSTRUCCIONES •
+
+    $default  reduce usando la regla 1 (prog)
+
+
+Estado 6
+
+    3 INSTRUCCIONES: INSTRUCCION • INSTRUCCIONES
+
+    TIPO_DATO_ARCHIVO  desplazar e ir al estado 1
+    FUNCION_ARCHIVO    desplazar e ir al estado 2
+    OTHER              desplazar e ir al estado 3
+
+    $default  reduce usando la regla 2 (INSTRUCCIONES)
+
+    INSTRUCCIONES         ir al estado 12
+    INSTRUCCION           ir al estado 6
+    DECLARACION           ir al estado 7
+    TIPOS_DATOS_ARCHIVOS  ir al estado 8
+    FUNCIONES             ir al estado 9
+    FUNCION               ir al estado 10
+
+
+Estado 7
+
+    4 INSTRUCCION: DECLARACION •
+
+    $default  reduce usando la regla 4 (INSTRUCCION)
+
+
+Estado 8
+
+    6 DECLARACION: TIPOS_DATOS_ARCHIVOS • PUNTOCOMA
+
+    PUNTOCOMA  desplazar e ir al estado 13
+
+
+Estado 9
+
+    5 INSTRUCCION: FUNCIONES •
+
+    $default  reduce usando la regla 5 (INSTRUCCION)
+
+
+Estado 10
+
+    8 FUNCIONES: FUNCION • LEFTP RIGHTP PUNTOCOMA
+
+    LEFTP  desplazar e ir al estado 14
+
+
+Estado 11
+
+    0 $accept: prog $end •
+
+    $default  aceptar
+
+
+Estado 12
+
+    3 INSTRUCCIONES: INSTRUCCION INSTRUCCIONES •
+
+    $default  reduce usando la regla 3 (INSTRUCCIONES)
+
+
+Estado 13
+
+    6 DECLARACION: TIPOS_DATOS_ARCHIVOS PUNTOCOMA •
+
+    $default  reduce usando la regla 6 (DECLARACION)
+
+
+Estado 14
+
+    8 FUNCIONES: FUNCION LEFTP • RIGHTP PUNTOCOMA
+
+    RIGHTP  desplazar e ir al estado 15
+
+
+Estado 15
+
+    8 FUNCIONES: FUNCION LEFTP RIGHTP • PUNTOCOMA
+
+    PUNTOCOMA  desplazar e ir al estado 16
+
+
+Estado 16
+
+    8 FUNCIONES: FUNCION LEFTP RIGHTP PUNTOCOMA •
+
+    $default  reduce usando la regla 8 (FUNCIONES)

@@ -1,0 +1,5 @@
+
+FILE;
+fopen();
+    fputs();
+    fclose();
